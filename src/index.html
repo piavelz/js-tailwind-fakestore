@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+    <title>Document</title>
+  </head>
+  <body class="bg-white font-thin">
+    <div class="w-full h-[30px] bg-black text-white">
+      <p class="text-center tracking-normal text-[14px] pt-[2px]">
+        50% off en productos seleccionados
+      </p>
+    </div>
+    <header
+      class="bg-[url('https://img.freepik.com/foto-gratis/moda-rapida-vs-moda-lenta-sostenible_23-2149134026.jpg?t=st=1740873933~exp=1740877533~hmac=cf99f3dc8b58cba63a97f32c7193b386962cb7309b5c38260cbe368f469c894a&w=1060')] bg-no-repeat bg-center bg-cover relative w-full h-[80vh] m-auto mb-1 shadow-2xl"
+    >
+      <!--nav -->
+      <div id="nav"></div>
+
+      <!-- header -->
+      <div class="absolute right-15 bottom-15 w-xl text-end">
+        <h2 class="text-4xl font-bold">TEXTO AQUI</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore,
+          obcaecati. Quis odit repellat sint vero et tempora fuga fugit dolores
+          quos error illo excepturi enim dolorum, nihil unde dolor perspiciatis.
+        </p>
+      </div>
+    </header>
+    <main class="w-full">
+      <!-- layout -->
+      <article class="h-[30vh] grid grid-cols-4 grid-rows-1 gap-2">
+        <img
+          src="https://i.pinimg.com/736x/71/95/b1/7195b19fd4d5a082ccb88089afe9dd91.jpg"
+          alt=""
+          class="w-full h-full object-cover hover:brightness-100 duration-300 ease-in-out"
+        />
+        <img
+          src="https://i.pinimg.com/736x/1e/cf/21/1ecf21f45d8fd2d0d83e75c24cd2fdc4.jpg"
+          alt=""
+          class="w-full h-full object-cover hover:brightness-100 duration-300 ease-in-out"
+        />
+        <img
+          src="https://i.pinimg.com/736x/26/6a/e0/266ae0b80f51ecc2b7aed31b6ed57df0.jpg"
+          alt=""
+          class="w-full h-full object-cover hover:brightness-100 duration-300 ease-in-out"
+        />
+        <img
+          src="https://i.pinimg.com/736x/19/bb/b4/19bbb4f5eaf35e05fa0f49da69099a8d.jpg"
+          alt=""
+          class="w-full h-full object-cover hover:brightness-100 duration-300 ease-in-out"
+        />
+      </article>
+      <!--Carrusel new´s-->
+      <article id="carrusel"></article>
+
+      <!-- grilla -->
+      <article
+        class="max-w-[1500px] h-[80vh] m-auto grid grid-cols-4 grid-rows-2 gap-4"
+      >
+        <div class="col-span-2 row-span-2 flex items-center justify-center">
+          <img
+            src="https://i.pinimg.com/736x/9b/23/72/9b23726bd2ef3bf149f1735cb58fbe63.jpg"
+            alt=""
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="w-full h-full">
+          <img
+            src="https://i.pinimg.com/736x/f4/2d/76/f42d764f92d1b9890bf3659308e43443.jpg"
+            alt=""
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="w-full h-full">
+          <img
+            src="https://i.pinimg.com/736x/2c/ad/fe/2cadfe3c5e12dd32563f57d5cea2ba03.jpg"
+            alt=""
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="w-full h-full">
+          <img
+            src="https://i.pinimg.com/736x/98/c9/a4/98c9a441238053696f3e215d7d1c09fc.jpg"
+            alt=""
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="w-full h-full">
+          <img
+            src="https://i.pinimg.com/736x/ba/f3/8b/baf38b4d66c5250a10553f315cdcef8b.jpg"
+            alt=""
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </article>
+
+      <!-- suggestions -->
+
+      <div id="suggestions" class="h-full py-10">
+        <p class="font-light tracking-[2px] text-2xl ml-50">Sugerencias</p>
+      </div>
+      <!-- <article class="max-w-[1200px] h-auto m-auto my-[50px]">
+        <p class="text-2xl font-light my-4">Te suguiero mirar</p>
+        <div
+          id="suggestion"
+          class="3 w-full h-[auto] grid grid-cols-4 grid-rows-[1fr_1fr] gap-2 gap-y-6"
+        ></div>
+      </article> -->
+
+      <!-- suscribe -->
+      <article
+        class="mt-[50px] m-auto max-w-[1500px] rounded-2xl h-[300px] bg-linear-to-r from-[#87a0e7] to-[#a2e6b9]"
+      >
+        <form action="" class="flex flex-col items-center">
+          <p class="text-2xl mt-[100px] font-light">
+            ¿Quieres recibir las ultimas novedades? 1313
+          </p>
+
+          <div class="bg-white rounded-xl m-7">
+            <input
+              type="text"
+              class="bg-white h-[50px] w-[350px] p-4 rounded-xl focus:outline-none tracking-[2px]"
+              placeholder="Ingrese su email"
+            />
+            <button
+              class="bg-gray-950 text-white p-3 rounded-xl cursor-pointer"
+            >
+              Suscribir
+            </button>
+          </div>
+        </form>
+      </article>
+    </main>
+    <div id="footer"></div>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
