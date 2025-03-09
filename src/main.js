@@ -1,68 +1,60 @@
-import carrousel from "./components/carrousel-m.js";
 import Footer from "./components/footer.js";
-import Navbar from "./components/Navbar.js";
-import productsLayout from "./components/productslayout.js";
-
+import { setupNavbar, handleNav } from "./components/navbar/navbar.js";
 import { getProducts } from "./api/productService.js";
+import { loadCarrousel } from "./components/carrusel/carrusel.js";
 
-//funcion que devuelve un obj con n cantidad de productos
+// Función para cargar componentes dinámicamente
+async function loadComponent(containerId, file, callback) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
 
-//carrousel
+  const response = await fetch(file);
+  const html = await response.text();
+  container.innerHTML = html;
 
-async function init() {
-  //Layout de productos sugeridos
-  const getLayoutProducts = await getProducts(8, false);
-  document
-    .getElementById("suggestions")
-    .appendChild(productsLayout(getLayoutProducts));
-
-  //carrousel
-  const getNews = await getProducts(9, true);
-  const carrouselElement = carrousel(getNews, "novedades", "#");
-  document.getElementById("carrusel").appendChild(carrouselElement);
-
-  //footer
-  const getFooter = Footer();
-  document.getElementById("footer").appendChild(getFooter);
+  if (callback) callback(); // Ejecutar callback después de cargar el HTML
 }
-document.addEventListener("DOMContentLoaded", init);
 
-//navbar
-const links = [
-  // { a: "#", title: "LOGOTIENDA", class: "w-[200px] px-10 text-xl border-r-2" },
-  {
-    a: "#",
-    title: "Home",
-    class:
-      "cursor-pointer  px-[20px]  hover:bg-white/10 hover:backdrop-blur-md   ",
-  },
-  {
-    a: "#",
-    title: "New",
-    class:
-      "cursor-pointer  px-[20px]  hover:bg-white/10 hover:backdrop-blur-md   ",
-  },
-  {
-    a: "#",
-    title: "50%Off",
-    class:
-      "cursor-pointer  px-[20px]  hover:bg-white/10 hover:backdrop-blur-md   ",
-  },
-];
-const userLinks = [
-  {
-    a: "#",
-    class:
-      "w-[30px] h-[30px] block bg-[url('./assets/icons/people.png')] bg-no-repeat bg-center bg-contain cursor-pointer",
-  },
-  {
-    a: "#",
-    class:
-      "w-[40px] h-[40px] block bg-[url('./assets/icons/shopping-bag.png')] bg-no-repeat bg-center bg-contain",
-  },
-];
+// Función para saber en qué página estamos
+function getCurrentPage() {
+  return window.location.pathname.split("/").pop();
+}
 
-document.addEventListener("DOMContentLoaded", () => {
-  const getNavbar = Navbar(links, userLinks);
-  document.getElementById("nav").appendChild(getNavbar);
+// Cargar solo los componentes necesarios según la página
+document.addEventListener("DOMContentLoaded", async () => {
+  loadComponent("nav", "/src/components/navbar/navbar.html", () => {
+    setupNavbar();
+    handleNav();
+  });
+
+  loadComponent("footer", "/src/components/footer/footer.html");
+
+  // Detectar la página y cargar componentes específicos
+  const page = getCurrentPage();
+
+  if (page === "index.html") {
+    await loadComponent(
+      "carousel",
+      "/src/components/carrusel/carrusel.html",
+      () => {
+        try {
+          getProducts(9, true).then((data) => {
+            loadCarrousel("carousel", data);
+          });
+        } catch (error) {
+          console.log("Error al obtener productos:", error);
+        }
+      }
+    );
+    // try {
+    //   const getNews = await getProducts(9, true); // Obtiene 9 productos
+    //   loadCarrousel("carrousel", getNews, "Novedades", "#");
+    // } catch (error) {
+    //   console.error("Error al obtener productos:", error);
+    // }
+  }
+
+  if (page === "pagina3.html") {
+    loadComponent("gallery", "./components/gallery/gallery.html");
+  }
 });
