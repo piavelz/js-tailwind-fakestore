@@ -1,3 +1,15 @@
+function getCurrentPage() {
+  const page = window.location.pathname.split("/").pop();
+  let colorText = "";
+
+  if (page === "index.html" || page === "") {
+    colorText = "text-white";
+  } else {
+    colorText = "text-black";
+  }
+  return colorText;
+}
+
 export function setupNavbar() {
   const links = [
     { a: "/index.html", title: "Home" },
@@ -41,18 +53,23 @@ export function setupNavbar() {
     },
   ];
 
-  const navLinks = document.getElementById("nav-links");
-  const userLinks = document.getElementById("user-links");
+  const navbar = document.querySelector("nav");
+  const navLinks = navbar.querySelector("#nav-links");
+  const userLinks = navbar.querySelector("#user-links");
+
+  let colorText = getCurrentPage();
+
+  navbar.querySelector(".dinamic-color").classList.add(colorText);
 
   links.forEach((link) => {
     const li = document.createElement("li");
     li.className =
-      "category content-center h-full cursor-pointer rounded-[4px] p-[10px] text-white hover:bg-white/5 hover:shadow-s duration-300 ease-in";
+      "category dinamic-color content-center h-full cursor-pointer rounded-[4px] p-[10px] hover:bg-white/5 hover:shadow-s duration-300 ease-in";
+    li.classList.add(colorText);
     const a = document.createElement("a");
     a.href = link.a;
     a.textContent = link.title;
     li.appendChild(a);
-    //agrega las opciones del navbar (home/categorys/%off)
 
     if (link.categories) {
       const divlinks = document.createElement("div");
@@ -99,16 +116,24 @@ export function setupNavbar() {
 }
 
 export function handleNav() {
+  let colorText = getCurrentPage();
   const nav = document.querySelector("nav");
+  const text = nav.querySelectorAll(".dinamic-color");
+
   const getCategories = document.querySelectorAll(".category");
   const categories = [...getCategories].slice(1);
 
   const toggleNavStyle = (add) => {
     const method = add ? "add" : "remove";
-
     nav.classList[method]("bg-black/80", "fixed", "h-10", "top-0");
     nav.classList[method === "add" ? "remove" : "add"]("h-14");
 
+    text.forEach((i) => {
+      if (colorText === "text-black") {
+        i.classList[method === "remove" ? "add" : "remove"]("text-black");
+        i.classList[method === "add" ? "add" : "remove"]("text-white");
+      }
+    });
     categories.forEach((category) => {
       const menu = category.lastChild;
       menu.classList[method]("top-10", "bg-white");

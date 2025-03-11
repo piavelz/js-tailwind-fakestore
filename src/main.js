@@ -2,6 +2,7 @@ import Footer from "./components/footer.js";
 import { setupNavbar, handleNav } from "./components/navbar/navbar.js";
 import { getProducts } from "./api/productService.js";
 import { loadCarrousel } from "./components/carrusel/carrusel.js";
+import { loadProducts } from "./components/productContainer/productContainer.js";
 
 // Función para cargar componentes dinámicamente
 async function loadComponent(containerId, file, callback) {
@@ -31,8 +32,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // Detectar la página y cargar componentes específicos
   const page = getCurrentPage();
+  console.log("Página actual:", page);
 
-  if (page === "index.html") {
+  if (page === "index.html" || page === "") {
     await loadComponent(
       "carousel",
       "/src/components/carrusel/carrusel.html",
@@ -46,15 +48,37 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
       }
     );
-    // try {
-    //   const getNews = await getProducts(9, true); // Obtiene 9 productos
-    //   loadCarrousel("carrousel", getNews, "Novedades", "#");
-    // } catch (error) {
-    //   console.error("Error al obtener productos:", error);
-    // }
+
+    await loadComponent(
+      "products",
+      "/src/components/productContainer/productContainer.html",
+      () => {
+        try {
+          getProducts(8).then((data) => {
+            loadProducts("products", data, "Productos destacados");
+          });
+        } catch (error) {
+          console.log("Error al obtener productos:", error);
+        }
+      }
+    );
   }
 
-  if (page === "pagina3.html") {
-    loadComponent("gallery", "./components/gallery/gallery.html");
+  if (page === "new.html") {
+    const nav = document.getElementById("nav");
+    console.log("nav", nav);
+    await loadComponent(
+      "products",
+      "/src/components/productContainer/productContainer.html",
+      () => {
+        try {
+          getProducts().then((data) => {
+            loadProducts("products", data);
+          });
+        } catch (error) {
+          console.log("Error al obtener productos:", error);
+        }
+      }
+    );
   }
 });

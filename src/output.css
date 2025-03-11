@@ -6,11 +6,15 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-red-300: oklch(0.808 0.114 19.571);
     --color-amber-400: oklch(0.828 0.189 84.429);
+    --color-green-100: oklch(0.962 0.044 156.743);
     --color-emerald-200: oklch(0.905 0.093 164.15);
-    --color-emerald-300: oklch(0.845 0.143 164.978);
+    --color-blue-100: oklch(0.932 0.032 255.585);
     --color-purple-700: oklch(0.496 0.265 301.924);
+    --color-pink-100: oklch(0.948 0.028 342.258);
     --color-pink-200: oklch(0.899 0.061 343.231);
+    --color-gray-100: oklch(0.967 0.003 264.542);
     --color-gray-200: oklch(0.928 0.006 264.531);
     --color-gray-800: oklch(0.278 0.033 256.848);
     --color-gray-950: oklch(0.13 0.028 261.692);
@@ -213,26 +217,11 @@
   .top-14 {
     top: calc(var(--spacing) * 14);
   }
-  .top-16 {
-    top: calc(var(--spacing) * 16);
-  }
-  .top-19 {
-    top: calc(var(--spacing) * 19);
-  }
-  .top-20 {
-    top: calc(var(--spacing) * 20);
-  }
-  .top-30 {
-    top: calc(var(--spacing) * 30);
-  }
   .right-0 {
     right: calc(var(--spacing) * 0);
   }
   .right-15 {
     right: calc(var(--spacing) * 15);
-  }
-  .bottom-0 {
-    bottom: calc(var(--spacing) * 0);
   }
   .bottom-15 {
     bottom: calc(var(--spacing) * 15);
@@ -336,6 +325,9 @@
   .mt-10 {
     margin-top: calc(var(--spacing) * 10);
   }
+  .mt-20 {
+    margin-top: calc(var(--spacing) * 20);
+  }
   .mt-\[50px\] {
     margin-top: 50px;
   }
@@ -391,8 +383,17 @@
   .h-\[50vh\] {
     height: 50vh;
   }
+  .h-\[60px\] {
+    height: 60px;
+  }
   .h-\[80vh\] {
     height: 80vh;
+  }
+  .h-\[100px\] {
+    height: 100px;
+  }
+  .h-\[100vh\] {
+    height: 100vh;
   }
   .h-\[150px\] {
     height: 150px;
@@ -427,8 +428,14 @@
   .w-\[150px\] {
     width: 150px;
   }
+  .w-\[200px\] {
+    width: 200px;
+  }
   .w-\[260px\] {
     width: 260px;
+  }
+  .w-\[300px\] {
+    width: 300px;
   }
   .w-\[350px\] {
     width: 350px;
@@ -483,6 +490,9 @@
   }
   .grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -541,14 +551,23 @@
   .gap-12 {
     gap: calc(var(--spacing) * 12);
   }
+  .gap-20 {
+    gap: calc(var(--spacing) * 20);
+  }
   .gap-y-6 {
     row-gap: calc(var(--spacing) * 6);
+  }
+  .gap-y-64 {
+    row-gap: calc(var(--spacing) * 64);
   }
   .place-self-center {
     place-self: center;
   }
   .place-self-end {
     place-self: end;
+  }
+  .self-center {
+    align-self: center;
   }
   .overflow-hidden {
     overflow: hidden;
@@ -598,14 +617,23 @@
   .bg-black\/80 {
     background-color: color-mix(in oklab, var(--color-black) 80%, transparent);
   }
+  .bg-blue-100 {
+    background-color: var(--color-blue-100);
+  }
   .bg-emerald-200 {
     background-color: var(--color-emerald-200);
   }
-  .bg-emerald-300 {
-    background-color: var(--color-emerald-300);
+  .bg-gray-100 {
+    background-color: var(--color-gray-100);
   }
   .bg-gray-950 {
     background-color: var(--color-gray-950);
+  }
+  .bg-green-100 {
+    background-color: var(--color-green-100);
+  }
+  .bg-pink-100 {
+    background-color: var(--color-pink-100);
   }
   .bg-pink-200 {
     background-color: var(--color-pink-200);
@@ -667,6 +695,9 @@
   .p-4 {
     padding: calc(var(--spacing) * 4);
   }
+  .p-30 {
+    padding: calc(var(--spacing) * 30);
+  }
   .p-40 {
     padding: calc(var(--spacing) * 40);
   }
@@ -691,6 +722,15 @@
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
   }
+  .py-5 {
+    padding-block: calc(var(--spacing) * 5);
+  }
+  .py-20 {
+    padding-block: calc(var(--spacing) * 20);
+  }
+  .pt-5 {
+    padding-top: calc(var(--spacing) * 5);
+  }
   .pt-\[2px\] {
     padding-top: 2px;
   }
@@ -699,6 +739,9 @@
   }
   .pb-4 {
     padding-bottom: calc(var(--spacing) * 4);
+  }
+  .pb-20 {
+    padding-bottom: calc(var(--spacing) * 20);
   }
   .text-center {
     text-align: center;
@@ -720,6 +763,9 @@
   }
   .text-\[0\.9rem\] {
     font-size: 0.9rem;
+  }
+  .text-\[10px\] {
+    font-size: 10px;
   }
   .text-\[14px\] {
     font-size: 14px;
@@ -761,6 +807,9 @@
   }
   .text-gray-800 {
     color: var(--color-gray-800);
+  }
+  .text-red-300 {
+    color: var(--color-red-300);
   }
   .text-white {
     color: var(--color-white);
