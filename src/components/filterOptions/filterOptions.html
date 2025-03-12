@@ -1,0 +1,46 @@
+<div
+  id="filters"
+  class="w-min-[280px] w-[350px] h-[80vh] bg-white rounded-2xl p-6 hidden md:block"
+>
+  <ul class="h-full">
+    <li class="text-2xl h-20 text-gray-500">N productos encontrados</li>
+    <li class="h-10"><p>Ordenar por:</p></li>
+    <li class="h-16">
+      <select name="order" id="">
+        <option value="">Recomendados</option>
+        <option value="">Mas vendido</option>
+        <option value="">Precio menor a mayor</option>
+        <option value="">Precio mayor a menor</option>
+      </select>
+    </li>
+    <li>
+      precio
+      <form action="" class="grid grid-cols-[1fr_14px_1fr_50px]">
+        <input
+          class="bg-white border border-gray-200 rounded-2xl h-10 w-full"
+          type="number"
+          placeholder="min"
+        />
+        <p class="text-center">-</p>
+        <input
+          class="bg-white border border-gray-200 rounded-2xl h-10 w-full"
+          type="number"
+          placeholder="max"
+        />
+        <input
+          type="submit"
+          value="Aplicar"
+          class="text-[12px] cursor-pointer hover:text-purple-600"
+        />
+      </form>
+    </li>
+    <li>
+      Tipo de entrega
+      <ul>
+        <li>despacho</li>
+        <li>retiro</li>
+      </ul>
+    </li>
+  </ul>
+  <div class="pages"></div>
+</div>

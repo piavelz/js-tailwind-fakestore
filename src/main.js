@@ -1,8 +1,9 @@
-import Footer from "./components/footer.js";
 import { setupNavbar, handleNav } from "./components/navbar/navbar.js";
 import { getProducts } from "./api/productService.js";
 import { loadCarrousel } from "./components/carrusel/carrusel.js";
 import { loadProducts } from "./components/productContainer/productContainer.js";
+import { imageBanner } from "./components/bannerPage/bannerPage.js";
+import { handleFilterOptions } from "./components/filterOptions/filterOptions.js";
 
 // Función para cargar componentes dinámicamente
 async function loadComponent(containerId, file, callback) {
@@ -65,8 +66,42 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   if (page === "new.html") {
-    const nav = document.getElementById("nav");
-    console.log("nav", nav);
+    await loadComponent(
+      "banner",
+      "/src/components/bannerPage/bannerPage.html",
+      () => {
+        const data = [
+          {
+            title: "Nuevos productos",
+            image:
+              "https://i.pinimg.com/736x/1c/a5/67/1ca567aa2c45ed4926580ee5a7a30ea9.jpg",
+          },
+          {
+            title: "Nuevo",
+            image:
+              "https://i.pinimg.com/736x/1c/a5/67/1ca567aa2c45ed4926580ee5a7a30ea9.jpg",
+          },
+          {
+            title: "Nuevos productos",
+            image:
+              "https://i.pinimg.com/736x/1c/a5/67/1ca567aa2c45ed4926580ee5a7a30ea9.jpg",
+          },
+          {
+            title: "Nuevo",
+            image:
+              "https://i.pinimg.com/736x/1c/a5/67/1ca567aa2c45ed4926580ee5a7a30ea9.jpg",
+          },
+        ];
+        imageBanner("banner", data);
+      }
+    );
+    await loadComponent(
+      "options",
+      "/src/components/filterOptions/filterOptions.html",
+      () => {
+        handleFilterOptions("options");
+      }
+    );
     await loadComponent(
       "products",
       "/src/components/productContainer/productContainer.html",

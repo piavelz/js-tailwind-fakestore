@@ -6,15 +6,20 @@
     <link href="../output.css" rel="stylesheet" />
     <title>Document</title>
   </head>
-  <body class="font-thin">
+  <body class="font-thin bg-gray-50">
     <div class="w-full h-[30px] bg-black text-white">
       <p class="text-center tracking-normal text-[14px] pt-[2px]">
         50% off en productos seleccionados
       </p>
     </div>
     <div id="nav" class="relative"></div>
-    <p>hola desde new</p>
-    <article id="products"></article>
+    <header id="banner" class="m-auto"></header>
+    <main
+      class="px-10 m-auto h-full grid grid-cols-1 lg:grid-cols-[300px_3fr] grid-rows-1 gap-4"
+    >
+      <article id="options" class="w-full h-full relative pt-10"></article>
+      <article id="products"></article>
+    </main>
     <footer id="footer"></footer>
     <script type="module" src=" ../main.js "></script>
   </body>

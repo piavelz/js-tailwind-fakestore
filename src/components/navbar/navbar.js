@@ -17,7 +17,7 @@ export function setupNavbar() {
       a: "/src/pages/new.html",
       title: "Categories",
       class:
-        " hidden absolute top-14  w-[360px] h-[300px] grid grid-cols-2 items-center  p-2 rounded-sm bg-white/80 transition-all duration-500 ease-in-out ",
+        " hidden absolute top-14  w-[360px] h-[300px] grid grid-cols-2 items-center  p-2 rounded-sm bg-white/80 transition-all duration-500 ease-in-out z-[100]",
       image:
         "https://i.pinimg.com/736x/0d/28/dc/0d28dcecaa9711434d67abb67f2d04f8.jpg",
       categories: [
@@ -32,7 +32,7 @@ export function setupNavbar() {
       a: "/src/pages/off.html",
       title: "50%Off",
       class:
-        " hidden  absolute top-14  w-[150px] h-[150px] p-2 bg-white/80 rounded-sm transition-all duration-500 ease-in-out ",
+        " hidden  absolute top-14  w-[150px] h-[150px] p-2 bg-white/80 rounded-sm transition-all duration-500 ease-in-out z-[100] ",
       categories: [
         { a: "./off.html", title: "Summer" },
         { a: "./off.html", title: "Accesories" },
