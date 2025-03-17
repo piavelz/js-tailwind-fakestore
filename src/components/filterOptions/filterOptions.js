@@ -12,7 +12,7 @@ export function handleFilterOptions(id) {
   document.addEventListener("scroll", () => {
     const top = options.offsetTop;
     const footerRect = footer.getBoundingClientRect();
-    const isFixed = window.scrollY >= top - 100;
+    const isFixed = window.scrollY >= top - 88;
 
     const isAboveFooter = footerRect.top <= window.innerHeight; // Si el footer está en pantalla
 

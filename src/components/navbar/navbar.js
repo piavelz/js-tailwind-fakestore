@@ -10,161 +10,88 @@ function getCurrentPage() {
   return colorText;
 }
 
-export function setupNavbar() {
-  const links = [
-    { a: "/index.html", title: "Home" },
-    {
-      a: "/src/pages/new.html",
-      title: "Categories",
-      class:
-        " hidden absolute top-14  w-[360px] h-[300px] grid grid-cols-2 items-center  p-2 rounded-sm bg-white/80 transition-all duration-500 ease-in-out z-[100]",
-      image:
-        "https://i.pinimg.com/736x/0d/28/dc/0d28dcecaa9711434d67abb67f2d04f8.jpg",
-      categories: [
-        { a: "./new.html", title: "Shoes" },
-        { a: "./new.html", title: "T-Shirts" },
-        { a: "./new.html", title: "Pants" },
-        { a: "./new.html", title: "Accesories" },
-        { a: "./new.html", title: "new" },
-      ],
-    },
-    {
-      a: "/src/pages/off.html",
-      title: "50%Off",
-      class:
-        " hidden  absolute top-14  w-[150px] h-[150px] p-2 bg-white/80 rounded-sm transition-all duration-500 ease-in-out z-[100] ",
-      categories: [
-        { a: "./off.html", title: "Summer" },
-        { a: "./off.html", title: "Accesories" },
-      ],
-    },
-  ];
+export async function handleNav() {
+  const navbar = document.getElementById("navbar");
+  const text = nav.querySelectorAll(".dinamic-color"); //-> aqui deberias tener todo el texto. iconos y logo
+  const cartIcon = document.getElementById("cart--icon");
+  const closeCart = document.querySelectorAll(".cart--close");
+  const containMenus = document.querySelectorAll(".contain-menu");
+  const menus = document.querySelectorAll(".menu");
+  const iconMenu = document.getElementById("icon-menu");
+  const menuPlegable = document.querySelector(".menu-plegable");
 
-  const userLinksData = [
-    {
-      a: "#",
-      class:
-        "w-[24px] h-[24px] block bg-[url('./assets/icons/us.png')] bg-no-repeat bg-center bg-contain cursor-pointer",
-    },
-    {
-      a: "#",
-      class:
-        "w-[24px] h-[24px] block bg-[url('./assets/icons/cart.png')] bg-no-repeat bg-center bg-contain",
-    },
-  ];
-
-  const navbar = document.querySelector("nav");
-  const navLinks = navbar.querySelector("#nav-links");
-  const userLinks = navbar.querySelector("#user-links");
-
+  console.log(containMenus);
   let colorText = getCurrentPage();
 
-  navbar.querySelector(".dinamic-color").classList.add(colorText);
-
-  links.forEach((link) => {
-    const li = document.createElement("li");
-    li.className =
-      "category dinamic-color content-center h-full cursor-pointer rounded-[4px] p-[10px] hover:bg-white/5 hover:shadow-s duration-300 ease-in";
-    li.classList.add(colorText);
-    const a = document.createElement("a");
-    a.href = link.a;
-    a.textContent = link.title;
-    li.appendChild(a);
-
-    if (link.categories) {
-      const divlinks = document.createElement("div");
-      divlinks.className = link.class;
-
-      const ul = document.createElement("ul");
-      ul.className = " left-0  size-fit p-[10px] text-black";
-
-      link.categories.forEach((category) => {
-        const li = document.createElement("li");
-        li.className =
-          "cursor-pointer hover:border-b-1 border-black/10 transition duration-200 ease p-2 my-3";
-
-        const a = document.createElement("a");
-        a.href = category.a;
-        a.textContent = category.title;
-
-        li.appendChild(a);
-        ul.appendChild(li);
-        divlinks.appendChild(ul);
-      });
-
-      if (link.image) {
-        const imgCategory = document.createElement("img");
-        imgCategory.src = link.image;
-        imgCategory.className = "w-[150px] h-[150px] ";
-        divlinks.appendChild(imgCategory);
-      }
-
-      li.appendChild(divlinks);
-    }
-
-    navLinks.appendChild(li);
-  });
-
-  userLinksData.forEach((link) => {
-    const li = document.createElement("li");
-    li.className = link.class;
-    const a = document.createElement("a");
-    a.href = link.a;
-    li.appendChild(a);
-    userLinks.appendChild(li);
-  });
-}
-
-export function handleNav() {
-  let colorText = getCurrentPage();
-  const nav = document.querySelector("nav");
-  const text = nav.querySelectorAll(".dinamic-color");
-
-  const getCategories = document.querySelectorAll(".category");
-  const categories = [...getCategories].slice(1);
-
-  const toggleNavStyle = (add) => {
-    const method = add ? "add" : "remove";
-    nav.classList[method]("bg-black/80", "fixed", "h-10", "top-0");
-    nav.classList[method === "add" ? "remove" : "add"]("h-14");
-
-    text.forEach((i) => {
-      if (colorText === "text-black") {
-        i.classList[method === "remove" ? "add" : "remove"]("text-black");
-        i.classList[method === "add" ? "add" : "remove"]("text-white");
-      }
+  containMenus.forEach((menu) => {
+    const menuContent = menu.lastElementChild;
+    menu.addEventListener("click", (e) => {
+      menuContent.classList.toggle("hidden");
+      e.stopPropagation();
     });
-    categories.forEach((category) => {
-      const menu = category.lastChild;
-      menu.classList[method]("top-10", "bg-white");
-      menu.classList[method === "add" ? "remove" : "add"](
-        "top-14",
-        "bg-white/80"
-      );
+    menuContent.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
+  });
+
+  iconMenu.addEventListener("click", () => {
+    menuPlegable.classList.toggle("hidden");
+  });
+
+  // cambiar color de manera dinamica segun pagina
+  const dinamicColorText = (color) => {
+    text.forEach((i) => {
+      const method = color === "text-black" ? "remove" : "add";
+      i.classList[method === "remove" ? "add" : "remove"]("text-black");
+      i.classList[method === "add" ? "add" : "remove"]("text-white");
     });
   };
 
+  dinamicColorText(colorText); //Detectar en que pagina se esta y cambiar color de texto si es necesario
+
+  function fixedNav(result) {
+    //cambiar tamaño de barra segun scroll
+    const method = result ? "add" : "remove";
+    navbar.classList[method]("bg-black/80", "fixed", "h-10", "top-0");
+    navbar.classList[method === "add" ? "remove" : "add"]("h-14", "relative");
+
+    //cambia color de texto segun  scroll
+    if (colorText === "text-black" && method === "add") {
+      dinamicColorText("text-white");
+    } else {
+      dinamicColorText(colorText);
+    }
+
+    //Cambiar altura de menu desplegable segun scroll
+    menus.forEach((menu) => {
+      menu.classList[method]("lg:top-10");
+      menu.classList[method === "add" ? "remove" : "add"]("lg:top-14");
+    });
+
+    if (window.screen.width < 1024) {
+      menuPlegable.classList[method]("top-10");
+      menuPlegable.classList[method === "add" ? "remove" : "add"]("top-14");
+    }
+  }
+
+  function showCart() {
+    const cartContainer = document.getElementById("cart--overlay");
+    cartContainer.classList.toggle("hidden");
+    document.body.classList.toggle("overflow-hidden");
+  }
+  //scroll event
   document.addEventListener("scroll", () => {
-    toggleNavStyle(window.scrollY > 30);
+    fixedNav(window.scrollY > 30);
   });
 
-  categories.forEach((category) => {
-    const menu = category.lastChild;
-    const showMenu = () => {
-      menu.classList.remove("hidden");
-      menu.classList.add("border", "border-gray-200");
-    };
-    const hideMenu = (e) => {
-      if (
-        !category.contains(e.relatedTarget) &&
-        !menu.contains(e.relatedTarget)
-      ) {
-        menu.classList.add("hidden");
+  cartIcon.addEventListener("click", showCart);
+
+  closeCart.forEach((element) => {
+    element.addEventListener("click", (e) => {
+      if (e.target === e.currentTarget) {
+        e.stopPropagation();
+        showCart();
       }
-    };
-    category.addEventListener("mouseenter", showMenu);
-    menu.addEventListener("mouseenter", showMenu);
-    category.addEventListener("mouseleave", hideMenu);
-    menu.addEventListener("mouseleave", hideMenu);
+    });
   });
 }

@@ -1,4 +1,4 @@
-import { setupNavbar, handleNav } from "./components/navbar/navbar.js";
+import { handleNav } from "./components/navbar/navbar.js";
 import { getProducts } from "./api/productService.js";
 import { loadCarrousel } from "./components/carrusel/carrusel.js";
 import { loadProducts } from "./components/productContainer/productContainer.js";
@@ -25,7 +25,6 @@ function getCurrentPage() {
 // Cargar solo los componentes necesarios según la página
 document.addEventListener("DOMContentLoaded", async () => {
   loadComponent("nav", "/src/components/navbar/navbar.html", () => {
-    setupNavbar();
     handleNav();
   });
 
@@ -115,5 +114,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
       }
     );
+  }
+
+  if (page === "cart.html") {
+    console.log("estamos en cart");
+    loadComponent("cart", "/src/components/cart/cart.html");
   }
 });
