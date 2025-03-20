@@ -4,6 +4,7 @@ import { loadCarrousel } from "./components/carrusel/carrusel.js";
 import { loadProducts } from "./components/productContainer/productContainer.js";
 import { imageBanner } from "./components/bannerPage/bannerPage.js";
 import { handleFilterOptions } from "./components/filterOptions/filterOptions.js";
+import { loadCart } from "./components/cart/cart.js";
 
 // Función para cargar componentes dinámicamente
 async function loadComponent(containerId, file, callback) {
@@ -118,6 +119,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (page === "cart.html") {
     console.log("estamos en cart");
-    loadComponent("cart", "/src/components/cart/cart.html");
+    loadComponent("cart", "/src/components/cart/cart.html", () => {
+      loadCart("itemsCart");
+    });
   }
 });

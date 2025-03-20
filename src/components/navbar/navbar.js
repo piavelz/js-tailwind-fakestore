@@ -1,3 +1,5 @@
+import { loadCart } from "/src/components/cart/cart.js";
+
 function getCurrentPage() {
   const page = window.location.pathname.split("/").pop();
   let colorText = "";
@@ -20,7 +22,6 @@ export async function handleNav() {
   const iconMenu = document.getElementById("icon-menu");
   const menuPlegable = document.querySelector(".menu-plegable");
 
-  console.log(containMenus);
   let colorText = getCurrentPage();
 
   containMenus.forEach((menu) => {
@@ -74,8 +75,13 @@ export async function handleNav() {
     }
   }
 
-  function showCart() {
+  async function showCart() {
     const cartContainer = document.getElementById("cart--overlay");
+    const navCart = document.getElementById("nav--cart");
+
+    const item = await loadCart("nav--cart");
+    console.log(item);
+    // cartContainer.innerHTML = item;
     cartContainer.classList.toggle("hidden");
     document.body.classList.toggle("overflow-hidden");
   }
