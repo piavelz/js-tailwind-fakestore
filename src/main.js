@@ -27,6 +27,10 @@ function getCurrentPage() {
 document.addEventListener("DOMContentLoaded", async () => {
   loadComponent("nav", "/src/components/navbar/navbar.html", () => {
     handleNav();
+    // loadCart("nav--cart");
+    loadComponent("nav--cart", "/src/components/cart/cart.html", () => {
+      loadCart("itemsCart");
+    });
   });
 
   loadComponent("footer", "/src/components/footer/footer.html");

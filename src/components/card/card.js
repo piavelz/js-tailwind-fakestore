@@ -20,5 +20,30 @@ export async function loadCard(product) {
   title.textContent = product.name.substring(0, 26).toUpperCase();
   price.textContent = `$ ${product.price}`;
 
+  //funcionalidad de boton agregar al carrito
+  const addBtn = card.querySelector(".add--item--btn");
+  addBtn.addEventListener("click", () => {
+    addToCart(product);
+  });
+
+  //cierre test
+
   return card;
+}
+
+function addToCart(product) {
+  // se encarga de agregar al localStorage los items seleccionados desde cada card, funciona correctamente
+  //guardar en el localStorage
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const existingProduct = cart.find((item) => item.id === product.id);
+  if (existingProduct) {
+    existingProduct.quantity += 1;
+  } else {
+    product.quantity = 1; // Agregar cantidad inicial
+    cart.push(product);
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  document.dispatchEvent(new CustomEvent("cartUpdated"));
 }

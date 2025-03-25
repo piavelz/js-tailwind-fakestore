@@ -124,26 +124,21 @@
     <li>
       <div
         id="cart--overlay"
-        class="cart--close w-[100vw] h-[100vh] hidden absolute top-[-30px] right-0 bg-black/60"
+        class="cart--close hidden w-[100vw] h-[100vh] absolute top-[0] right-0 bg-black/60"
       >
         <article
-          class="w-[100%] h-[80vh] mt-[20vh] grid grid-rows-[90px_auto_90px] rounded-t-2xl bg-gray-50 z-50 md:w-[50%] md:h-[100vh] md:mt-0 md:rounded-none"
+          class="w-[100%] h-[90vh] mt-[10vh] grid grid-rows-[60%_40%] relative rounded-t-2xl pt-4 bg-white z-50 md:grid-rows-[70%_30%] lg:w-[50%] lg:h-[100vh] lg:pt-0 lg:grid-rows-[auto_20%] lg:mt-0 lg:rounded-none lg:float-right lg:max-w-[800px]"
         >
-          <header
-            class="relative w-full h-22 p-6 border-b border-black/10 text-center"
+          <span
+            class="cart--close absolute w-[30px] h-[30px] top-2 right-2 bg-[url('/src/assets/icons/close.svg')] bg-no-repeat bg-center bg-cover cursor-pointer z-1 lg:right-3.5"
           >
-            <h1 class="text-3xl text-start">Carrito</h1>
-            <span
-              class="cart--close absolute w-[30px] h-[30px] top-2 right-2 bg-[url('/src/assets/icons/close.svg')] bg-no-repeat bg-center bg-cover cursor-pointer"
-            >
-            </span>
-          </header>
+          </span>
           <section
             id="nav--cart"
-            class="w-full relative overflow-y-auto"
+            class="w-full h-auto overflow-y-auto"
           ></section>
           <section
-            class="w-full h-auto bg-white p-3 lg:p-6 grid grid-cols-2 gap-4"
+            class="w-full h-full bg-white p-3 lg:p-6 grid grid-cols-2 gap-4"
           >
             <button class="w-full h-[50px] border border-purple-900">
               <a href="/src/pages/cart.html"> Revisar productos</a>

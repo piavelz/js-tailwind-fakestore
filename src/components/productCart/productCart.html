@@ -1,34 +1,27 @@
 <div
-  class="h-[120px] w-full flex items-center p-2 gap-2 border-b place-content-between border-gray-200 absolute"
+  class="cart-item h-[150px] w-full p-4 flex items-center gap-2 border-b border-gray-200 place-content-between bg-white relative"
 >
   <div class="min-w-[100px] w-[100px] h-full overflow-hidden">
     <img
       src="https://i.pinimg.com/736x/e6/88/27/e68827d29e5dea1f8b222f15ccb58adf.jpg"
       alt="imagen"
-      class="w-full h-full object-cover"
+      class="product-image w-full h-full object-cover"
     />
   </div>
 
   <p
-    class="h-auto w-autofont-light text-sm max-h-[60px] text-start overflow-hidden"
+    class="product-name h-auto text-left w-auto min-w-[120px] font-light text-sm overflow-hidden"
   >
-    Nombre del producto lalallal ala lalalalla lalalalal
+    Producto
   </p>
-  <p class="w-[120px] text-start">$00.000</p>
+  <p class="product-price w-[120px] text-start">$00.00</p>
 
-  <select name="count" id="" class="border mr-2 lg:mr-6 border-gray-300">
-    <option value="0">0</option>
-    <option value="1" selected>1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-    <option value="8">8</option>
-    <option value="9">9</option>
-    <option value="10">10</option>
-  </select>
+  <div>
+    <input
+      type="text"
+      class="quantity w-[30px] h-[30px] py-1 text-center border-2 border-gray-200 rounded-sm text-gray-600 text-sm"
+    />
+  </div>
 
   <span class="absolute top-1 right-2 text-xs">X</span>
 </div>
