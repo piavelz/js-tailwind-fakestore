@@ -1,27 +1,38 @@
 <div
-  class="cart-item h-[150px] w-full p-4 flex items-center gap-2 border-b border-gray-200 place-content-between bg-white relative"
+  class="cart-item h-[180px] w-full p-4 relative flex gap-4 border-b border-gray-200 bg-white hover:bg-gray-50 transition-colors duration-500"
 >
   <div class="min-w-[100px] w-[100px] h-full overflow-hidden">
-    <img
-      src="https://i.pinimg.com/736x/e6/88/27/e68827d29e5dea1f8b222f15ccb58adf.jpg"
-      alt="imagen"
-      class="product-image w-full h-full object-cover"
-    />
+    <img src="" alt="" class="product-image w-full h-full object-contain" />
   </div>
 
-  <p
-    class="product-name h-auto text-left w-auto min-w-[120px] font-light text-sm overflow-hidden"
+  <div
+    class="flex flex-row gap-4 flex-wrap w-full h-full py-6 align-baseline lg:flex-nowrap items-center lg:p-0 content-between place-content-between"
   >
-    Producto
-  </p>
-  <p class="product-price w-[120px] text-start">$00.00</p>
+    <p
+      class="product-name text-left w-auto min-w-[100px] font-light text-sm overflow-hidden flex-1"
+    >
+      Producto
+    </p>
+    <p class="product-price max-w-[120px] text-start flex-1">$00.00</p>
 
-  <div>
-    <input
-      type="text"
-      class="quantity w-[30px] h-[30px] py-1 text-center border-2 border-gray-200 rounded-sm text-gray-600 text-sm"
-    />
+    <div class="flex items-center gap-1 w-full lg:w-auto">
+      <button
+        class="remove w-[14px] h-[14px] bg-[url('./assets/icons/minus.svg')] bg-no-repeat bg-center bg-contain cursor-pointer"
+      ></button>
+      <input
+        type="number"
+        min="1"
+        max="20"
+        readonly
+        class="quantity w-[30px] h-[30px] py-1 text-center border border-gray-200 rounded-sm text-gray-600 text-sm"
+      />
+      <button
+        class="add w-[14px] h-[14px] bg-[url('./assets/icons/add.svg')] bg-no-repeat bg-center bg-contain cursor-pointer"
+      ></button>
+    </div>
   </div>
 
-  <span class="absolute top-1 right-2 text-xs">X</span>
+  <span
+    class="remove-item w-[14px] h-[14px] absolute top-2 right-2 cursor-pointer bg-[url('./assets/icons/close.svg')] bg-no-repeat bg-center bg-contain"
+  ></span>
 </div>

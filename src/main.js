@@ -22,22 +22,20 @@ async function loadComponent(containerId, file, callback) {
 function getCurrentPage() {
   return window.location.pathname.split("/").pop();
 }
-
+const page = getCurrentPage();
 // Cargar solo los componentes necesarios según la página
 document.addEventListener("DOMContentLoaded", async () => {
-  loadComponent("nav", "/src/components/navbar/navbar.html", () => {
-    handleNav();
-    // loadCart("nav--cart");
-    loadComponent("nav--cart", "/src/components/cart/cart.html", () => {
-      loadCart("itemsCart");
+  //Nav para todas las paginas excepto cart.html
+  if (page !== "cart.html") {
+    loadComponent("nav", "/src/components/navbar/navbar.html", () => {
+      handleNav();
+      loadComponent("nav--cart", "/src/components/cart/cart.html", () => {
+        loadCart("itemsCart");
+      });
     });
-  });
+  }
 
   loadComponent("footer", "/src/components/footer/footer.html");
-
-  // Detectar la página y cargar componentes específicos
-  const page = getCurrentPage();
-  console.log("Página actual:", page);
 
   if (page === "index.html" || page === "") {
     await loadComponent(
@@ -122,9 +120,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   if (page === "cart.html") {
-    console.log("estamos en cart");
     loadComponent("cart", "/src/components/cart/cart.html", () => {
       loadCart("itemsCart");
     });
   }
 });
+
+document.addEventListener("cartUpdated", () => loadCart("itemsCart"));
