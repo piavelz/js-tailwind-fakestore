@@ -1,5 +1,5 @@
 <section
-  class="product-card grid grid-rows-[300px_auto_30px] w-auto min-w-[140px] h-auto mx-2 p-4 relative cursor-pointer hover:shadow-lg snap-start bg-white border-2 border-gray-200/20 group"
+  class="product-card grid grid-rows-[120px_auto_30px] w-auto min-w-[140px] h-auto mx-2 p-4 relative cursor-pointer hover:shadow-lg snap-start bg-white border-2 border-gray-200/20 group lg:grid-rows-[300px_auto_30px]"
 >
   <img
     src=""
@@ -10,11 +10,16 @@
   <h3 class="product-name h-fit text-[12px] font-light"></h3>
   <p class="product-price text-[14px] py-2 font-medium"></p>
   <button
-    class="add--item--btn hidden w-fit px-4 py-0.5 absolute top-0 right-0 group-hover:block cursor-pointer hover:bg-black/10 transition-color duration-300 ease-in"
+    class="add--item--btn w-fit absolute px-4 py-0.5 top-0 right-0 cursor-pointer overflow-hidden rounded-xl group"
   >
     <span
-      class="w-[10px] h-[10px] bg-[url('./assets/icons/add.svg')] bg-no-repeat bg-center bg-cover inline-block"
+      class="w-56 h-56 bg-black/5 absolute bottom-0 left-0 translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0 group-focus:ml-0 group-focus:mb-32 group-focus:translate-x-0"
     ></span>
-    Agregar
+    <span class="flex items-center gap-1 text-xs">
+      <span
+        class="w-[10px] h-[10px] bg-[url('./assets/icons/add.svg')] bg-no-repeat bg-center bg-cover inline-block"
+      ></span>
+      agregar
+    </span>
   </button>
 </section>

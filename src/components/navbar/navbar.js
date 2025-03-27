@@ -1,5 +1,6 @@
+const page = window.location.pathname.split("/").pop();
+
 function getCurrentPage() {
-  const page = window.location.pathname.split("/").pop();
   let colorText = "";
 
   if (page === "index.html" || page === "") {
@@ -75,7 +76,6 @@ export async function handleNav() {
 
   async function showCart() {
     const cartContainer = document.getElementById("cart--overlay");
-    const navCart = document.getElementById("nav--cart");
     cartContainer.classList.toggle("hidden");
     document.body.classList.toggle("overflow-hidden");
   }
@@ -83,8 +83,10 @@ export async function handleNav() {
   document.addEventListener("scroll", () => {
     fixedNav(window.scrollY > 30);
   });
-
-  cartIcon.addEventListener("click", showCart);
+  //cuando se está en cart.html no se debe mostrar el carrito de navegación
+  if (page !== "cart.html") {
+    cartIcon.addEventListener("click", showCart);
+  }
 
   closeCart.forEach((element) => {
     element.addEventListener("click", (e) => {

@@ -25,15 +25,12 @@ function getCurrentPage() {
 const page = getCurrentPage();
 // Cargar solo los componentes necesarios según la página
 document.addEventListener("DOMContentLoaded", async () => {
-  //Nav para todas las paginas excepto cart.html
-  if (page !== "cart.html") {
-    loadComponent("nav", "/src/components/navbar/navbar.html", () => {
-      handleNav();
-      loadComponent("nav--cart", "/src/components/cart/cart.html", () => {
-        loadCart("itemsCart");
-      });
+  loadComponent("nav", "/src/components/navbar/navbar.html", () => {
+    handleNav();
+    loadComponent("nav--cart", "/src/components/cart/cart.html", () => {
+      loadCart("itemsCart");
     });
-  }
+  });
 
   loadComponent("footer", "/src/components/footer/footer.html");
 
