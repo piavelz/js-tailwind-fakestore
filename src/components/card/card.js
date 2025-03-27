@@ -24,6 +24,16 @@ export async function loadCard(product) {
     addToCart(product);
   });
 
+  //efecto hover en mobile
+  document.querySelectorAll(".hover-effect").forEach((el) => {
+    el.addEventListener("touchstart", () =>
+      el.classList.add("ml-0", "mb-32", "translate-x-0")
+    );
+    el.addEventListener("touchend", () =>
+      el.classList.remove("ml-0", "mb-32", "translate-x-0")
+    );
+  });
+
   return card;
 }
 
