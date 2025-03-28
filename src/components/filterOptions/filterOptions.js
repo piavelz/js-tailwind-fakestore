@@ -4,7 +4,6 @@ export function handleFilterOptions(id) {
   const footer = document.querySelector("#footer");
 
   function optionsStyles(add) {
-    console.log("dentro de optStyles", add);
     const method = add ? "add" : "remove";
     fixed.classList[method]("fixed", "top-[90px]");
   }

@@ -24,14 +24,16 @@ export async function loadCard(product) {
     addToCart(product);
   });
 
-  //efecto hover en mobile
-  document.querySelectorAll(".hover-effect").forEach((el) => {
-    el.addEventListener("touchstart", () =>
-      el.classList.add("ml-0", "mb-32", "translate-x-0")
-    );
-    el.addEventListener("touchend", () =>
-      el.classList.remove("ml-0", "mb-32", "translate-x-0")
-    );
+  const span = addBtn.querySelector(".hover-effect-add");
+  addBtn.addEventListener("touchstart", () => {
+    span.classList.remove("ml-9", "mb-9", "translate-x-full");
+    span.classList.add("ml-0", "mb-32", "translate-x-0");
+  });
+  addBtn.addEventListener("touchend", () => {
+    setTimeout(() => {
+      span.classList.remove("ml-0", "mb-32", "translate-x-0");
+      span.classList.add("ml-9", "mb-9", "translate-x-full");
+    }, 500);
   });
 
   return card;
@@ -51,4 +53,15 @@ function addToCart(product) {
   localStorage.setItem("cart", JSON.stringify(cart));
 
   document.dispatchEvent(new CustomEvent("cartUpdated"));
+
+  //efecto hover en mobile
+  // document.querySelectorAll(".hover-effect").forEach((el) => {
+  //   console.log("hover-effect");
+  //   el.addEventListener("touchstart", () =>
+  //     el.classList.add("ml-0", "mb-32", "translate-x-0")
+  //   );
+  //   el.addEventListener("touchend", () =>
+  //     el.classList.remove("ml-0", "mb-32", "translate-x-0")
+  //   );
+  // });
 }
