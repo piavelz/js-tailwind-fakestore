@@ -1,6 +1,6 @@
 <nav
   id="navbar"
-  class="w-full h-14 relative px-2 grid items-center grid-cols-[32px_auto_auto] border-b-1 z-50 transition-[height] duration-500 ease-in-out lg:grid-cols-3 lg:grid-rows-1"
+  class="w-full h-14 relative px-2 grid items-center grid-cols-[32px_auto_auto] border-b-1 z-50 transition-colors duration-500 ease-in-out lg:grid-cols-3 lg:grid-rows-1"
 >
   <img
     src="/src/assets/icons/bars.svg"
@@ -13,7 +13,7 @@
     id="nav--links"
   >
     <li
-      class="dinamic-color h-[44px] border-b border-black/40 cursor-pointer rounded-[4px] lg:min-h-auto lg:h-full lg:border-none hover:bg-black/10 hover:shadow-s"
+      class="dinamic-color hover-mobile-nav h-[44px] border-b border-black/40 cursor-pointer rounded-[4px] lg:min-h-auto lg:h-full lg:border-none hover:bg-black/10 hover:shadow-s transition-colors duration-300"
     >
       <a
         href="/index.html"
@@ -22,47 +22,65 @@
       >
     </li>
     <li
-      class="dinamic-color contain-menu h-auto relative border-b border-black/40 cursor-pointer rounded-[4px] lg:min-h-auto lg:h-full lg:border-none hover:bg-black/10 hover:shadow-s group"
+      class="hover-mobile-nav dinamic-color contain-menu h-auto relative border-b border-black/40 cursor-pointer rounded-[4px] lg:min-h-auto lg:h-full lg:border-none hover:bg-black/10 hover:shadow-s transition-colors duration-300 group"
     >
       <p class="p-[10px] lg:h-full lg:p-0 lg:content-center">Categorias</p>
 
       <ul
         class="menu hidden grid-cols-1 justify-items-start bg-transparent text-white p-4 lg:w-[160px] lg:h-[200px] lg:group-hover:grid lg:absolute lg:top-14 lg:bg-black/50"
       >
-        <li class="w-full hover:font-mono">
+        <li
+          class="hover-mobile-nav w-full hover:font-mono transition-colors duration-300"
+        >
           <a href="/src/pages/new.html">Camisas</a>
         </li>
-        <li class="w-full hover:font-mono">
+        <li
+          class="hover-mobile-nav w-full hover:font-mono transition-colors duration-300"
+        >
           <a href="/src/pages/new.html">Abrigos</a>
         </li>
-        <li class="w-full hover:font-mono">
+        <li
+          class="hover-mobile-nav w-full hover:font-mono transition-colors duration-300"
+        >
           <a href="/src/pages/new.html">Pantalones</a>
         </li>
-        <li class="w-full hover:font-mono">
+        <li
+          class="hover-mobile-nav w-full hover:font-mono transition-colors duration-300"
+        >
           <a href="/src/pages/new.html">Accesorios</a>
         </li>
-        <li class="w-full hover:font-mono">
+        <li
+          class="hover-mobile-nav w-full hover:font-mono transition-colors duration-300"
+        >
           <a href="/src/pages/new.html">Tecnologia</a>
         </li>
       </ul>
     </li>
     <li
-      class="dinamic-color contain-menu h-auto relative border-b border-black/40 cursor-pointer rounded-[4px] lg:min-h-auto lg:h-full lg:border-none hover:bg-black/10 hover:shadow-s group"
+      class="hover-mobile-nav dinamic-color contain-menu h-auto relative border-b border-black/40 cursor-pointer rounded-[4px] lg:min-h-auto lg:h-full lg:border-none hover:bg-black/10 hover:shadow-s transition-colors duration-300 group"
     >
       <p class="p-[10px] lg:h-full lg:p-0 lg:content-center">lo nuevo</p>
       <ul
         class="menu hidden grid-cols-1 bg-transparent text-white p-4 lg:w-[160px] lg:h-[200px] lg:group-hover:grid lg:absolute lg:top-14 lg:bg-black/50"
       >
-        <li class="w-full hover:font-mono lg:justify-self-start">
+        <li
+          class="hover-mobile-nav w-full hover:font-mono lg:justify-self-start transition-colors duration-300"
+        >
           <a href="#" class="">Parte superior</a>
         </li>
-        <li class="w-full hover:font-mono">
+        <li
+          class="hover-mobile-nav w-full hover:font-mono transition-colors duration-300"
+        >
           <a href="#">Parte inferior</a>
         </li>
-        <li class="w-full hover:font-mono">
+        <li
+          class="hover-mobile-nav w-full hover:font-mono transition-colors duration-300"
+        >
           <a href="#">Accesorios</a>
         </li>
-        <li class="w-full hover:font-mono">
+        <li
+          class="hover-mobile-nav w-full hover:font-mono transition-colors duration-300"
+        >
           <a href="#">Tecnologia</a>
         </li>
       </ul>
@@ -125,7 +143,7 @@
         class="cart--close hidden w-[100vw] h-[100vh] absolute top-[0] right-0 bg-black/60"
       >
         <article
-          class="w-[100%] h-[90vh] mt-[10vh] grid grid-rows-[75%_25%] relative rounded-t-2xl pt-4 bg-white z-50 md:grid-rows-[70%_30%] lg:w-[50%] lg:h-[100vh] lg:pt-0 lg:grid-rows-[auto_20%] lg:mt-0 lg:rounded-none lg:float-right lg:max-w-[800px]"
+          class="w-[100%] h-[90vh] mt-[10vh] grid grid-rows-[70%_30%] relative rounded-t-2xl px-4 pt-6 bg-white z-50 md:grid-rows-[70%_30%] lg:w-[50%] lg:h-[100vh] lg:pt-0 lg:grid-rows-[auto_20%] lg:mt-0 lg:rounded-none lg:float-right lg:max-w-[800px]"
         >
           <span
             class="cart--close absolute w-[30px] h-[30px] top-2 right-2 bg-[url('/src/assets/icons/close.svg')] bg-no-repeat bg-center bg-cover cursor-pointer z-1 lg:right-3.5"
@@ -136,12 +154,15 @@
             class="w-full h-auto overflow-y-auto"
           ></section>
           <section
-            class="w-full h-full bg-white p-3 lg:p-6 grid grid-cols-2 gap-4"
+            class="w-full flex flex-row flex-wrap pt-4 shadow-[0px_-7px_3px_-5px_rgba(235,235,235,1)]"
           >
-            <button class="w-full h-[50px] border border-purple-900">
-              <a href="/src/pages/cart.html"> Revisar productos</a>
+            <p class="w-[40%] border-b text-start border-gray-100">subtotal</p>
+            <span class="w-[60%] text-end border-b border-gray-100">00.00</span>
+            <p class="w-[40%] font-medium text-start">Total</p>
+            <span class="w-[60%] text-end">00.00</span>
+            <button class="w-full h-[40px] bg-black text-white font-medium">
+              <a href="/src/pages/cart.html">Ir a comprar</a>
             </button>
-            <button class="w-full h-[50px] bg-purple-900">Ir a pagar</button>
           </section>
         </article>
       </div>

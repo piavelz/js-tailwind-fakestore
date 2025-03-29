@@ -13,13 +13,27 @@ function getCurrentPage() {
 
 export async function handleNav() {
   const navbar = document.getElementById("navbar");
-  const text = nav.querySelectorAll(".dinamic-color"); //-> aqui deberias tener todo el texto. iconos y logo
+  const text = nav.querySelectorAll(".dinamic-color");
   const cartIcon = document.getElementById("cart--icon");
   const closeCart = document.querySelectorAll(".cart--close");
   const containMenus = document.querySelectorAll(".contain-menu");
   const menus = document.querySelectorAll(".menu");
   const iconMenu = document.getElementById("icon-menu");
   const menuPlegable = document.querySelector(".menu-plegable");
+  const hoverMobile = document.querySelectorAll(".hover-mobile-nav");
+
+  hoverMobile.forEach((i) => {
+    i.addEventListener("touchstart", () => {
+      i.classList.add("bg-black/20");
+    });
+    i.addEventListener("touchend", () => {
+      setTimeout(() => {
+        i.classList.remove("bg-black/20");
+      }, 300);
+    });
+  });
+
+  console.log("hover para mobile", hoverMobile);
 
   let colorText = getCurrentPage();
 
